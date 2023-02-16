@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "bayesianpia2"
+version = "0.1.0"
+description = ""
+authors = ["IPablo271 <69815580+IPablo271@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
