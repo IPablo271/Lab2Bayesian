@@ -1,5 +1,5 @@
 import bayesianpia2 as bnp
-# create a Bayesian Network
+# Creacion de la red bayesiana
 nodes = ["C", "S", "R", "W"]
 edges = {
     "C": {},
@@ -9,7 +9,7 @@ edges = {
 }
 bn = bnp.BayesianNetwork(nodes, edges)
 
-# define the conditional probabilities for each node
+# Definicion de las probabilidades condicionales
 bn.factors["C"] = {(): 0.5}
 bn.factors["S"] = {(True,): 0.8, (False,): 0.2}
 bn.factors["R"] = {
@@ -20,14 +20,17 @@ bn.factors["W"] = {
     (True,): 0.9, (False,): 0.1
 }
 
-# check if the network is fully described
-print(bn.is_fully_described())  # True
+# Verificar si la red esta totalmente descrta
+print("La red esta completamente descrita: "+str(bn.is_fully_described()))  
 
-# get the compact representation of the network
+#Forma compacta de la red
+print("Forma compacta de la red: "+bn.compact())
+
+#Tabla de representacion de la red
 print(bn.representation())
 
-# compute the factor for the node "R" with evidence {"C": True, "S": False}
+#Computar los factores 
 bn.compute_factor("R", {"C": True, "S": False})
 print(bn.factors["R"])
 
-print("Forma compacta de la red: "+bn.compact())
+
