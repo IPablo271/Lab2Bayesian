@@ -9,8 +9,20 @@ class BayesianNetwork:
             if node not in self.factors:
                 return False
         return True
+    
+    def compact(self):
+        comp = ''
+        for dato in self.edges:
+            valor = self.edges[dato]
+            if len(valor) == 0:
+                comp = comp + '('+ dato +')'
+            else:
+                for elemento in valor:
+                    comp = comp + '('+ elemento + '/'+dato+')'
+        return comp
 
-    def get_compact_representation(self):
+
+    def representation(self):
         s = ""
         for node in self.nodes:
             s += f"{node}: "
@@ -58,8 +70,6 @@ class BayesianNetwork:
         if parent_values in cpt:
             return cpt[parent_values]
         else:
-            # if the parent configuration is not defined in the CPT,
-            # we use Laplace smoothing to avoid zero probabilities
             alpha = 1
             num_states = len(cpt)
             num_true = sum([1 for k in cpt if k[-1]])

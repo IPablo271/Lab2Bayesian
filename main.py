@@ -24,8 +24,10 @@ bn.factors["W"] = {
 print(bn.is_fully_described())  # True
 
 # get the compact representation of the network
-print(bn.get_compact_representation())
+print(bn.representation())
 
 # compute the factor for the node "R" with evidence {"C": True, "S": False}
 bn.compute_factor("R", {"C": True, "S": False})
 print(bn.factors["R"])
+
+print("Forma compacta de la red: "+bn.compact())
